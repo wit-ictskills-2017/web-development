@@ -357,7 +357,7 @@ Press Ctl+C to stop the server
 <p><img src="img/23.png" alt=""></p>
 <p>Now we will <code>serve</code> the web site locally with this command:</p>
 <pre><code>C:&gt; cd iot-web
-C:\iot-web&gt; \node\harp server
+C:\iot-web&gt; harp server
 Your server is listening at http://localhost:9000/
 Press Ctl+C to stop the server</code></pre>
 <p>Notice that the command is executed form within the <code>iot-web</code> directory.</p>
@@ -372,8 +372,8 @@ Terminate batch job (Y/N)? y
 ^C
 G:\iot-web&gt;</code></pre>
 <p>From still within the <code>iot-folder</code>, enter the following command:</p>
-<pre><code>C:\iot-web&gt; \node\harp compile
-C:\iot-web&gt; \node\surge
+<pre><code>C:\iot-web&gt; harp compile
+C:\iot-web&gt; surge ./www
     Welcome to Surge!
     Please login or create an account by entering your email and password:</code></pre>
 <p>Enter credential to create a new account now - be sure to remember the password. Surge will then deploy the site to a public server:</p>
