@@ -368,7 +368,7 @@ Listening for transport dt_socket at address: 8000
      
       <div  class="ui tab segment lab" data-tab="04">
         <h1>Static Playlist</h1>
-<p>In this step we will start to display the playlist itself. First, replace <code>mainpanel.hbs</code> with a new partial (contained with the existing segment) called <code>listsongs.hbs</code>:</p>
+<p>In this step we will start to display the playlist itself. First, replace <code>mainpanel.html</code> with a new partial called <code>listsongs.html</code>:</p>
 <h2>views/tags/listsongs.html</h2>
 <pre><code class="lang-html">&lt;table class=&quot;ui fixed table&quot;&gt;
   &lt;thead&gt;
@@ -398,7 +398,7 @@ Listening for transport dt_socket at address: 8000
   &lt;/h2&gt;
   #{listsongs/}
 &lt;/section&gt;</code></pre>
-<p>Make sure the app runs successfully - the Dashboard should contain an empty title</p>
+<p>Make sure the app runs successfully. The table will be empty.</p>
 <p>To test out the UX, we might include some actual songs (replace the tbody with the following):</p>
 <h2>views/tags/listsongs.html</h2>
 <pre><code class="lang-html">&lt;tbody&gt;
@@ -454,8 +454,8 @@ Listening for transport dt_socket at address: 8000
       <div  class="ui tab segment lab" data-tab="05">
         <h1>Dynamic Playlist</h1>
 <p>The app as we have it now could have been completely built as a static web site. However, the framework and tools we have used in this version enable us to evolve this static site into an interactive app</p>
-<p>Thie first step is to eliminate some of the static content from the songlist partial. Here is a new version to replace the current version </p>
-<h2>views/tags/listsongs.hbs</h2>
+<p>Thie first step is to eliminate some of the static content from the songlist partial. Here is a new version to replace the current version:</p>
+<h2>views/tags/listsongs.html</h2>
 <pre><code class="lang-html">&lt;table class=&quot;ui fixed table&quot;&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -490,9 +490,23 @@ Listening for transport dt_socket at address: 8000
   &lt;/h2&gt;
   #{listsongs playlist:playlist/}
 &lt;/section&gt;</code></pre>
-<p>This playlist object must be passed to the dashboard for this to work. </p>
+<p>This playlist object,in turn, must be passed to the dashboard controller for this to work. </p>
 <p>We can introduce &#39;model&#39; classes to implement the playlist in our app. Introduce these two new classes into the <code>models</code> package:</p>
 <h2>app/models/Song.java</h2>
+<pre><code>package models;
+
+public class Song
+{
+  public String title;
+  public String artist;
+
+  public Song(String title, String artist)
+  {
+    this.title = title;
+    this.artist = artist;
+  }
+}</code></pre>
+<h2>app/models/Playlist.java</h2>
 <pre><code>package models;
 
 import java.util.ArrayList;
@@ -508,21 +522,7 @@ public class Playlist
     this.title = title;
   }
 }</code></pre>
-<h2>app/models/Playlist.java</h2>
-<pre><code>package models;
-
-public class Song
-{
-  public String title;
-  public String artist;
-
-  public Song(String title, String artist)
-  {
-    this.title = title;
-    this.artist = artist;
-  }
-}</code></pre>
-<p>In the <code>dashboard.js</code> controller, we can define a playlist object, add some songs, and send to the view:</p>
+<p>In the Dashboard controller, we can define a playlist object, add some songs, and send to the view:</p>
 <pre><code class="lang-js">package controllers;
 
 import models.Playlist;
@@ -552,7 +552,7 @@ public class Dashboard extends Controller
      
       <div  class="ui tab segment lab" data-tab="06">
         <h1>Multiple playlists</h1>
-<p>Here is a revised dashboard index method:</p>
+<p>Here is a revised Dashboard index method:</p>
 <h2>app/controllers/dashboard.java</h2>
 <pre><code>...
   public static void index() {
@@ -585,7 +585,7 @@ public class Dashboard extends Controller
 <pre><code>import java.util.ArrayList;
 import java.util.List;</code></pre>
 <p>Before pasting in the above code - try to use the Eclipse autocorrect feature in insert them automatically.</p>
-<p>Notice that we are not creating 2 playlists: p1 and p2. Each of these contains 3 songs. Read this code carefully and make sure you can understand the data structure.</p>
+<p>Notice that we are now creating 2 playlists: p1 and p2. Each of these contains 3 songs. Read this code carefully and make sure you can understand the data structure.</p>
 <p>Here is a new version of the dasnboard view:</p>
 <h2>app/views/dashboard.html</h2>
 <pre><code>#{extends &#39;main.html&#39; /}
@@ -625,7 +625,7 @@ import java.util.List;</code></pre>
      
       <div  class="ui tab segment lab" data-tab="Exercises">
         <h1>Exercises</h1>
-<h2>Exercise 1: Sample Solution</h2>
+<h2>Exercise 1: Download and Rename Sample Solution</h2>
 <p>A complete version of the app as it should be at the end of this lab:</p>
 <ul>
 <li><a href="https://github.com/edeleastar/playlist/releases/tag/playist-1.end">https://github.com/edeleastar/playlist/releases/tag/playist-1.end</a></li>
@@ -635,7 +635,7 @@ import java.util.List;</code></pre>
 <p>However, if you already have a project called &#39;playlist&#39; in your workspace, then you may not be able to import it into eclipse. So, first rename the project to <code>playlist-1</code> (covered in step 1), and then run this command:</p>
 <pre><code>play eclipsify</code></pre>
 <p>... and then import as shown in Step 1. </p>
-<h2>Exercise 3: Playlist Data Structure</h2>
+<h2>Exercise 2: Review Playlist Data Structure</h2>
 <p>Look again at the playlist as represented in:</p>
 <pre><code>    Song s1 = new Song(&quot;Piano Sonata No. 3&quot;, &quot;Beethoven&quot;);
     Song s2 = new Song(&quot;Piano Sonata No. 7&quot;, &quot;Beethoven&quot;);
@@ -660,9 +660,9 @@ import java.util.List;</code></pre>
 <h2>Exercise 3: Add a new playlist</h2>
 <p>Extend your version of the app to contain a new playlist - make up some songs. Verify that they are rendered as expected.</p>
 <h2>Exercise 4: New Fields</h2>
-<p>Extend the playlist to have new entry called <code>duration</code>. Also, extend each song to also have a <code>duration</code> field + a <code>genre</code> field.</p>
+<p>Extend the playlist to have new entry called <code>duration</code>. Also, extend each song to also have a <code>duration</code> field + a <code>genre</code> field. Change the constructor to initialise these fields.</p>
 <p>Modify the dashboard view to display these new fields.</p>
-<h2>Exercise 5:</h2>
+<h2>Exercise 5: Extend Views</h2>
 <p>Extend the following views:</p>
 <ul>
 <li>Welcome: Extend the welcome view to contain a more detailed outline of the purpose of the application</li>
