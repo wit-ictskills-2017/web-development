@@ -305,6 +305,8 @@ body
 <p>Accept all the default options if they are presented (usually just for Windows).</p>
 <p>If the installation succeeded, then verify the version. Do this by opening a shell (command prompt on Windows) and enter the following:</p>
 <pre><code>git --version</code></pre>
+<p>The system might respond with something like this:</p>
+<pre><code>git version 2.10.1 (Apple Git-78)</code></pre>
 
       </div>
      
@@ -318,7 +320,7 @@ body
 <p><img src="img/01x.png" alt=""></p>
 <p>Make sure you can launch eclipse successfully. When launching, keep an eye on the location of the &#39;workspace&#39;:</p>
 <p><img src="img/03x.png" alt=""></p>
-<p>You can change this to suit your tastes.</p>
+<p>You can change this to suit your configuration at any time.</p>
 
       </div>
      
@@ -333,7 +335,7 @@ body
 <ul>
 <li><a href="https://www.playframework.com/download#older-versions">https://www.playframework.com/download#older-versions</a></li>
 </ul>
-<p>On the this page, select and download play-1.4.4.zip (the version number is very important)</p>
+<p>On the this page, select and download <code>play-1.4.4.zip</code> (the version number is very important)</p>
 <p>Unzip to somewhere on your PC - a good location might be:</p>
 <pre><code>C:\dev</code></pre>
 <p>Once you have unzipped it, the folder might look like this:</p>
@@ -363,7 +365,7 @@ export PATH</code></pre>
 <p><img src="img/50.png" alt=""></p>
 <p>Under &quot;System Variables&quot;, locate and select the &#39;Path&#39; entry:</p>
 <p><img src="img/52.png" alt=""></p>
-<p>Edit this entry, and append the path in which play is installed. This could be <code>C:\dev\play-1.4.4</code> in the above example.</p>
+<p>Append the path in which play is installed. This could be <code>C:\dev\play-1.4.4</code> in the above example.</p>
 <p>NB: DO NOT DELETE ANY OF THE CURRENT VALUES OF THE PATH!</p>
 <p>Press &quot;Ok&quot; all the way back and rerun the command prompt (close the one already open).</p>
 <p>To test, just type &quot;play&quot; from a command prompt you should see something like this:</p>
@@ -388,7 +390,7 @@ export PATH</code></pre>
      
       <div  class="ui tab segment lab" data-tab="05">
         <h1>Create a Play/Eclipse Project</h1>
-<p>Back in the command line, change to a directory where you keep your web development projects.</p>
+<p>Back in the command line, change to a directory where you keep your web development projects and enter:</p>
 <pre><code>play new playdemo</code></pre>
 <p>You should get:</p>
 <pre><code>~        _            _ 
