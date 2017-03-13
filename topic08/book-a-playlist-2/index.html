@@ -592,7 +592,7 @@ public class Bootstrap extends Job
         <h1>Database</h1>
 <p>With your application still running - visit the following url:</p>
 <ul>
-<li><a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#x68;&#x74;&#116;&#x70;&#58;&#47;&#47;&#x6c;&#111;&#x63;&#x61;&#x6c;&#104;&#x6f;&#115;&#116;&#58;&#x39;&#x30;&#x30;&#x30;&#47;&#x40;&#100;&#x62;">&#x68;&#x74;&#116;&#x70;&#58;&#47;&#47;&#x6c;&#111;&#x63;&#x61;&#x6c;&#104;&#x6f;&#115;&#116;&#58;&#x39;&#x30;&#x30;&#x30;&#47;&#x40;&#100;&#x62;</a></li>
+<li><a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#x68;&#x74;&#x74;&#x70;&#x3a;&#47;&#x2f;&#x6c;&#111;&#x63;&#97;&#x6c;&#104;&#111;&#115;&#x74;&#x3a;&#57;&#48;&#x30;&#x30;&#47;&#x40;&#100;&#x62;">&#x68;&#x74;&#x74;&#x70;&#x3a;&#47;&#x2f;&#x6c;&#111;&#x63;&#97;&#x6c;&#104;&#111;&#115;&#x74;&#x3a;&#57;&#48;&#x30;&#x30;&#47;&#x40;&#100;&#x62;</a></li>
 </ul>
 <p>This should display this panel:</p>
 <p><img src="img/04.png" alt=""></p>
@@ -624,7 +624,7 @@ public class Bootstrap extends Job
 <h2>Exercise 2: New Playlist</h2>
 <p>Working only in the data.yml, create a new Playlist. If this works correctly, you should see the playlist in the dashboard just by restarting the application.</p>
 <h2>Exercise 3: Admin Panel</h2>
-<p>This is a challenging exercise. Give it a go, and if it is too hard, move on to the next lab - which starts with a solution to this.</p>
+<p>This is a challenging exercise - but the hints provide most of what you need.</p>
 <p>Problem: We would like an &#39;admin&#39; interface to the application, which displays all the songs in the database - ignoring the playlists they belong to for the moment. The view should also display the IDs of the songs:</p>
 <p><img src="img/09.png" alt=""></p>
 <p>This is a &#39;hidden&#39; view, that does not appear in the menu. It is accessed by browsing directly to:</p>
@@ -650,10 +650,10 @@ public class Dashboard extends Controller
 {
   public static void index() 
   {
-    Logger.info(&quot;Rendering DashboardAdmin
+    Logger.info(&quot;Rendering Admin&quot;);
 
     // TODO - get list of all songs, and send them to the view
-    render (&quot;dashboard.html&quot;);
+    render (&quot;admin.html&quot;);
   }
 }</code></pre>
 <h2>Admin view</h2>
@@ -684,7 +684,7 @@ public class Dashboard extends Controller
 &lt;/section&gt;</code></pre>
 <h2>Even more Hints!</h2>
 <p>How to read all songs form the Songs table:</p>
-<pre><code>    List&lt;Playlist&gt; playlists = Playlist.findAll();</code></pre>
+<pre><code>    List&lt;Song&gt; songs = Song.findAll();</code></pre>
 <p>How to iterate through a list of songs:</p>
 <pre><code>       ...
       #{list items:songs, as:&#39;song&#39;}
@@ -692,6 +692,10 @@ public class Dashboard extends Controller
          ...
       #{/list}
        ...</code></pre>
+<p>How to get the songs from the controller to the view:</p>
+<pre><code>...
+  render(&quot;admin.html&quot;, songs);
+...</code></pre>
 
       </div>
      
