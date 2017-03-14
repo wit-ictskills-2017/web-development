@@ -302,6 +302,18 @@ body
 <h2>Exercise 3: Delete Playlist Functionality</h2>
 <p>Make the button actually delete the denoted playlist.</p>
 <h2>Solution</h2>
+<h3>conf/routes</h3>
+<pre><code>GET     /dashboard/deleteplaylist/{id}          Dashboard.deletePlaylist</code></pre>
+<h3>app/controllers/Dashboard.java</h3>
+<pre><code>...
+  public static void deletePlaylist (Long id)
+  {
+    Playlist playlist = Playlist.findById(id);
+    Logger.info (&quot;Removing&quot; + playlist.title);
+    playlist.delete();
+    redirect (&quot;/dashboard&quot;);
+  }
+...</code></pre>
 
       </div>
      
