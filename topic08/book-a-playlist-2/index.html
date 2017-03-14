@@ -591,6 +591,28 @@ public class Bootstrap extends Job
 07:03:11,064 INFO  ~ Rendering about
 07:03:12,094 INFO  ~ Rendering Dashboard</code></pre>
 <p>The &#39;Rendering&#39; messages are familiar - but we have a series of new &#39;Table on found&#39; messages. We will will see the significance of these shortly.</p>
+<p>To display the playlist from the database - here is a revised version of the dashboard controller:</p>
+<p>app/controllers/Dashboard.java</p>
+<pre><code>package controllers;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import models.Playlist;
+import models.Song;
+import play.Logger;
+import play.mvc.Controller;
+
+public class Dashboard extends Controller
+{
+  public static void index() 
+  {
+    Logger.info(&quot;Rendering Admin&quot;);
+
+    List&lt;Playlist&gt; playlists = Playlist.findAll();
+    render (&quot;dashboard.html&quot;, playlists);
+  }
+}</code></pre>
 
       </div>
      
@@ -598,7 +620,7 @@ public class Bootstrap extends Job
         <h1>Database</h1>
 <p>With your application still running - visit the following url:</p>
 <ul>
-<li><a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x68;&#116;&#116;&#x70;&#x3a;&#47;&#x2f;&#108;&#x6f;&#x63;&#97;&#x6c;&#x68;&#x6f;&#115;&#x74;&#x3a;&#57;&#48;&#48;&#x30;&#x2f;&#x40;&#100;&#98;">&#x68;&#116;&#116;&#x70;&#x3a;&#47;&#x2f;&#108;&#x6f;&#x63;&#97;&#x6c;&#x68;&#x6f;&#115;&#x74;&#x3a;&#57;&#48;&#48;&#x30;&#x2f;&#x40;&#100;&#98;</a></li>
+<li><a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#104;&#116;&#x74;&#112;&#58;&#47;&#x2f;&#x6c;&#111;&#x63;&#97;&#x6c;&#x68;&#111;&#x73;&#x74;&#x3a;&#x39;&#x30;&#48;&#48;&#47;&#x40;&#x64;&#98;">&#104;&#116;&#x74;&#112;&#58;&#47;&#x2f;&#x6c;&#111;&#x63;&#97;&#x6c;&#x68;&#111;&#x73;&#x74;&#x3a;&#x39;&#x30;&#48;&#48;&#47;&#x40;&#x64;&#98;</a></li>
 </ul>
 <p>This should display this panel:</p>
 <p><img src="img/04.png" alt=""></p>
