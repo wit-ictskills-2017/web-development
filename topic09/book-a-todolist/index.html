@@ -278,6 +278,12 @@ body
         </a>
       
     
+      
+        <a class="item" href="../../topic10/book-sessions/index.html">
+          Lab-10 Todolist-2
+        </a>
+      
+    
   </div>
   <div class="pusher" tabindex="-1">
     <div class="ui basic segment">
@@ -437,7 +443,7 @@ POST    /dashboard/addtodo                      Dashboard.addTodo
 <p>Run the application now - and verify that you can add a todo item. The UX will not display them yet however (we still have the static elements). </p>
 <p>We can view them in the database however:</p>
 <ul>
-<li><a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#108;&#x6f;&#x63;&#97;&#x6c;&#x68;&#111;&#115;&#x74;&#58;&#x39;&#48;&#x30;&#48;&#x2f;&#x40;&#x64;&#98;">&#108;&#x6f;&#x63;&#97;&#x6c;&#x68;&#111;&#115;&#x74;&#58;&#x39;&#48;&#x30;&#48;&#x2f;&#x40;&#x64;&#98;</a>
+<li><a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#x6c;&#111;&#99;&#x61;&#108;&#x68;&#x6f;&#115;&#116;&#58;&#x39;&#48;&#x30;&#48;&#x2f;&#64;&#x64;&#98;">&#x6c;&#111;&#99;&#x61;&#108;&#x68;&#x6f;&#115;&#116;&#58;&#x39;&#48;&#x30;&#48;&#x2f;&#64;&#x64;&#98;</a>
 
 </li>
 </ul>
@@ -476,7 +482,7 @@ POST    /dashboard/addtodo                      Dashboard.addTodo
       </div>
      
       <div  class="ui tab segment lab" data-tab="Ex-1">
-        <h1>Exercise 1: Yaml</h1>
+        <h1>Exercise 1: Yaml + Bootatrap</h1>
 <p>Using a new yaml file, which you create in the <code>conf</code> folder - seed the database with 3 todo items. The yaml file is usually called <code>data.yml</code>. Here is an example of a single todo item:</p>
 <pre><code>Todo(t1):
   title: Make tea</code></pre>
@@ -488,7 +494,7 @@ POST    /dashboard/addtodo                      Dashboard.addTodo
       </div>
      
       <div  class="ui tab segment lab" data-tab="Ex-2">
-        <h1>Exercise 1</h1>
+        <h1>Exercise 2: Tables</h1>
 <p>Change the todo view segment in the dashboard view:</p>
 <h2>app/views/dashboard.html</h2>
 <pre><code>...
@@ -524,7 +530,7 @@ POST    /dashboard/addtodo                      Dashboard.addTodo
       </div>
      
       <div  class="ui tab segment lab" data-tab="Ex-3">
-        <h1>Exercise 2</h1>
+        <h1>Exercise 3: Delete button</h1>
 <p>Include a &#39;delete&#39; button into the second column of the todo table to look like this:</p>
 <p><img src="img/05.png" alt=""></p>
 <p>Examples of various style of buttons here:</p>
@@ -536,7 +542,7 @@ POST    /dashboard/addtodo                      Dashboard.addTodo
       </div>
      
       <div  class="ui tab segment lab" data-tab="Ex-4">
-        <h1>Exercise 3</h1>
+        <h1>Exercise 4: Delete Implementation</h1>
 <p>Introduce the following route into the application:</p>
 <h2>conf/routes.html</h2>
 <pre><code>GET     /dashboard/deletetodo/{id}              Dashboard.deleteTodo</code></pre>
@@ -560,7 +566,7 @@ POST    /dashboard/addtodo                      Dashboard.addTodo
       </div>
      
       <div  class="ui tab segment lab" data-tab="Ex-5">
-        <h1>Admin Feature</h1>
+        <h1>Exercise 5: Admin Feature</h1>
 <p>Introduce a new route into the app:</p>
 <ul>
 <li><a href="http://localhost:9000/admin">http://localhost:9000/admin</a></li>
