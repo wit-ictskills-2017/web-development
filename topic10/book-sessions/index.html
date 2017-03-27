@@ -327,7 +327,7 @@ body
 <p>Introduce this new menu alongside the existing one:</p>
 <h2>app/views/tags/welcomenenu.html</h2>
 <pre><code>&lt;nav class=&quot;ui menu&quot;&gt;
-  &lt;header class=&quot;ui header item&quot;&gt; &lt;a href=&quot;#&quot;&gt; Play Gym &lt;/a&gt;&lt;/header&gt;
+  &lt;header class=&quot;ui header item&quot;&gt; &lt;a href=&quot;#&quot;&gt; Todo List &lt;/a&gt;&lt;/header&gt;
   &lt;div class=&quot;right menu&quot;&gt;
     &lt;a id=&quot;signup&quot; class=&quot;item&quot; href=&quot;/signup&quot;&gt; Signup  &lt;/a&gt;
     &lt;a id=&quot;login&quot; class=&quot;item&quot; href=&quot;/login&quot;&gt;  Login   &lt;/a&gt;
@@ -372,12 +372,12 @@ body
       &lt;h3 class=&quot;ui header&quot;&gt;Register&lt;/h3&gt;
       &lt;div class=&quot;two fields&quot;&gt;
         &lt;div class=&quot;field&quot;&gt;
-          &lt;label&gt;Name&lt;/label&gt;
-          &lt;input placeholder=&quot;Name&quot; type=&quot;text&quot; name=&quot;name&quot;&gt;
+          &lt;label&gt;First Name&lt;/label&gt;
+          &lt;input placeholder=&quot;First Name&quot; type=&quot;text&quot; name=&quot;firstname&quot;&gt;
         &lt;/div&gt;
         &lt;div class=&quot;field&quot;&gt;
-          &lt;label&gt;Gender&lt;/label&gt;
-          &lt;input placeholder=&quot;Gender&quot; type=&quot;text&quot; name=&quot;gender&quot;&gt;
+          &lt;label&gt;Last Name&lt;/label&gt;
+          &lt;input placeholder=&quot;Last Name&quot; type=&quot;text&quot; name=&quot;lastname&quot;&gt;
         &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;field&quot;&gt;
@@ -530,7 +530,7 @@ Member(m2):
   password: secret</code></pre>
 <p>Restart the app now - and browse to the database:</p>
 <ul>
-<li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#x6c;&#111;&#99;&#97;&#108;&#104;&#x6f;&#115;&#x74;&#x3a;&#x39;&#48;&#x30;&#48;&#47;&#x40;&#100;&#98;">&#x6c;&#111;&#99;&#97;&#108;&#104;&#x6f;&#115;&#x74;&#x3a;&#x39;&#48;&#x30;&#48;&#47;&#x40;&#100;&#98;</a>
+<li><a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x6c;&#x6f;&#x63;&#97;&#108;&#x68;&#x6f;&#x73;&#116;&#58;&#57;&#x30;&#48;&#48;&#47;&#64;&#x64;&#x62;">&#x6c;&#x6f;&#x63;&#97;&#108;&#x68;&#x6f;&#x73;&#116;&#58;&#57;&#x30;&#48;&#48;&#47;&#64;&#x64;&#x62;</a>
 
 </li>
 </ul>
@@ -765,7 +765,16 @@ Member(m2):
 <ul>
 <li><a href="https://github.com/edeleastar/todolist/releases/tag/todolist-2.end">https://github.com/edeleastar/todolist/releases/tag/todolist-2.end</a></li>
 </ul>
-<h2>Exercise: introduce sessions into Playlist.</h2>
+<h2>Exercise 1: Locate the Session Cookie in Chrome Developer Tools</h2>
+<p>The developer tools in chrome allow you to see in detail the workings of the browser. In particular, under <code>Application-&gt;Cookies</code> we can see the cookie our application has created:</p>
+<p><img src="img/10.png" alt=""></p>
+<p>If we log out, it will be deleted:</p>
+<p><img src="img/11.png" alt=""></p>
+<p>Experiment with locating the cookie - try to delete it manually, and see what effect it has on the app.</p>
+<p>The developer tools can also reveal the cookie in transit during a request:</p>
+<p><img src="img/12.png" alt=""></p>
+<p>See if you can locate the above view in Chrome.</p>
+<h2>Exercise 2: Introduce sessions into Playlist.</h2>
 <p>This is the final playlist project:</p>
 <ul>
 <li><a href="https://github.com/edeleastar/playlist/releases/tag/playlist.4.end">https://github.com/edeleastar/playlist/releases/tag/playlist.4.end</a></li>
