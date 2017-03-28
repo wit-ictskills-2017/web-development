@@ -141,18 +141,6 @@ body
       06
     </a>
     
-    <a class="item" data-tab="07">
-      07
-    </a>
-    
-    <a class="item" data-tab="08">
-      08
-    </a>
-    
-    <a class="item" data-tab="09">
-      09
-    </a>
-    
     <a class="item" data-tab="Exercises">
       Exercises
     </a>
@@ -335,46 +323,136 @@ body
 <li><a href="https://www.sourcetreeapp.com/">https://www.sourcetreeapp.com/</a></li>
 </ul>
 <p>And download and install the application for your platform.</p>
+<p>On the very first screen - you will be asked to log in to <code>Atlassian</code>. Your bitbucket credentials should work here...</p>
+<p>During installation you will be asked to link your sourcetree installation to github and to bitbucket</p>
+<p>This are the first install screen you will see:</p>
+<p><img src="img/01.png" alt=""></p>
+<p>Here you will be asked to log in to an <code>Atlassian</code> account:</p>
+<p><img src="img/02.png" alt=""></p>
+<p>The credentials here should be the same as your bitbucket account details from the last step.</p>
+<p><img src="img/03.png" alt=""></p>
+<p>We would link to link our Sourcetree installation to both Bitbucket &amp; Github:</p>
+<p><img src="img/04.png" alt=""></p>
+<p>Selecting each of the above will take you through an authorisation sequence with both services.</p>
+<p>If all goes well, the Sourcetree home screen will launch:</p>
+<p><img src="img/11.png" alt=""></p>
+<p>To see if the both the bitbucket a github accounts are properly linked, select <code>Tools-&gt;Options-&gt;Authentication</code> :</p>
+<p><img src="img/10.png" alt=""></p>
+<p>This should show the both accounts linked as above.</p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="03">
-        <p>#</p>
+        <h1>Create new Repo on Github</h1>
+<p>Back on :</p>
+<ul>
+<li><a href="https://github.com">https://github.com</a></li>
+</ul>
+<p>Create a new repository:</p>
+<p><img src="img/17.png" alt=""></p>
+<p>This will create a new empty repo on github.</p>
+<p><img src="img/18.png" alt=""></p>
+<p>Note carefully the url of the repo - in the box above. Copy this to the clipboard now.</p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="04">
-        <p>#</p>
+        <h1>Create New Application</h1>
+<p>We now would like to start a new play application, which we will tie to a github repo.</p>
+<p>First, create a new app by cloning a starter app:</p>
+<h2>Create New Project</h2>
+<p>Create a new play project using this command:</p>
+<pre><code>git clone https://github.com/edeleastar/play-template-1.git</code></pre>
+<p>The shell should show something like this:</p>
+<pre><code>Cloning into &#39;play-template-1&#39;...
+remote: Counting objects: 66, done.
+remote: Compressing objects: 100% (47/47), done.
+remote: Total 66 (delta 9), reused 66 (delta 9), pack-reused 0
+Unpacking objects: 100% (66/66), done.</code></pre>
+<h2>Rename Project</h2>
+<p>The default name of the project should be changed now. This will require the following procedure:</p>
+<ul>
+<li>Rename the folder <code>play-template-1</code>. Call the folder <code>todolist-versioned</code> instead.</li>
+<li><p>Use Sublime Text to edit this file: <code>playlist/conf/application.conf</code>. The first three lines contains the following:</p>
+<pre><code>  # This is the main configuration file for the application.
+  # ~~
+  application.name=play-template-1</code></pre>
+</li>
+<li><p>Change <code>play-template-1</code> above to <code>todolist-versioned</code>, and save the file:</p>
+<pre><code>  # This is the main configuration file for the application.
+  # ~~
+  application.name=todolist-versioned</code></pre>
+</li>
+</ul>
+<h2>Import into Eclipse</h2>
+<p>Still in the shell, and in the project folder enter the following command:</p>
+<pre><code>play eclipsify</code></pre>
+<p>You should get this response:</p>
+<pre><code>~        _            _
+~  _ __ | | __ _ _  _| |
+~ | &#39;_ \| |/ _&#39; | || |_|
+~ |  __/|_|\____|\__ (_)
+~ |_|            |__/
+~
+~ play! 1.4.4, https://www.playframework.com
+~
+~ using java version &quot;1.8.0_60&quot;
+~ OK, the application &quot;play-template-1&quot; is ready for eclipse
+~ Use File/Import/General/Existing project to import /Users/edeleastar/repos/modules/web/ict-2017/prj/labprj/play-template-1 into eclipse
+~
+~ Use eclipsify again when you want to update eclipse configuration files.
+~ However, it&#39;s often better to delete and re-import the project into your workspace since eclipse keeps dirty caches...</code></pre>
+<p>Now we can import the project into Eclipse. Launch eclipse, and select <code>File-&gt;Open Projects from File System...</code>. Select the Directory containing the project and import.</p>
+<p>Run the project -</p>
+<pre><code>play run</code></pre>
+<p>and verify that the skeleton app is available:</p>
+<ul>
+<li><a href="http://localhost:9000">http://localhost:9000</a></li>
+</ul>
+<p>Do nor proceed to the next step until this procedure has been completed without any errors.</p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="05">
-        <p>#</p>
+        <h1>Set Remote Repo</h1>
+<p>Your Sourcetree app currently looks like this:</p>
+<p><img src="img/11.png" alt=""></p>
+<p>Locate the <code>todolist-versioned</code> folder we just created, and drag and drop it onto SourceTree:</p>
+<p><img src="img/12.png" alt=""></p>
+<p>Select it in the navigation panel, and we have a more detailed view:</p>
+<p><img src="img/13.png" alt=""></p>
+<p>Select <code>Repository-&gt;Settings</code> - anb you will get details of the current <code>remote</code> repo this repository is connected to:</p>
+<p><img src="img/14.png" alt=""></p>
+<p>Select <code>Edit</code> - and change URL / Path to the url you should have in the clipboard from step 3:</p>
+<p><img src="img/20.png" alt=""></p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="06">
-        <p>#</p>
-
-      </div>
-     
-      <div  class="ui tab segment lab" data-tab="07">
-        <p>#</p>
-
-      </div>
-     
-      <div  class="ui tab segment lab" data-tab="08">
-        <p>#</p>
-
-      </div>
-     
-      <div  class="ui tab segment lab" data-tab="09">
-        <p>#</p>
+        <h1>Push</h1>
+<p>Starting from this view:</p>
+<p><img src="img/13.png" alt=""></p>
+<p>Press the <code>Push</code> button:</p>
+<p>This will bring up this screen:</p>
+<p><img src="img/20.png" alt=""></p>
+<p>When you press Push on this panel, the application will be replicated to the repo in your account on github. This might take a minute or so...</p>
+<p>You should be able to view it on github now:</p>
+<p><img src="img/21.png" alt=""></p>
+<p>Explore the various view - including the <code>commits</code> screen:</p>
+<p><img src="img/22.png" alt=""></p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="Exercises">
-        <h1>Solution</h1>
+        <h1>Exercises</h1>
+<p>To get fluent with this procedure, try the following:</p>
+<h2>Exercise 1: Github Practice</h2>
+<p>Create another new app - called <code>demo-1</code> - using the procedure  specified on Step 04.</p>
+<p>Then, Following steps 05 and 06, attach the new project to a new repo on github.</p>
+<h2>Exercise 2: Bitbucket Practice</h2>
+<p>The procedure we carried out to bind a local repo to github can also be carried out to bind a repo to a bitbucket hosted repository.
+Create (another!) new project <code>demo-2</code> - this time see if you can figure out how put it on bitbucket.</p>
+<p>The main difference between github and bitbucket is that github repos are always public, whereas bitbucket can be either (default private).</p>
 
       </div>
      
