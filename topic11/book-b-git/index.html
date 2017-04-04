@@ -309,7 +309,8 @@ body
         <h1>todolist-versioned Project</h1>
 <p>We should have our project in Sourcetree from the last lab:</p>
 <p><img src="img/01.png" alt=""></p>
-<p>if we would like to use Intellj Idea - we can &#39;idealize&#39; then app:</p>
+<p>Notice we have &#39;uncommitted changes&#39; in the above - this is the modification we made to application.conf to rename the project. We will return to this in a moment.</p>
+<p>First, if we would like to use Intellj Idea - we can &#39;idealize&#39; then app:</p>
 <pre><code>play idealize</code></pre>
 <p>... and then import into Idea.</p>
 <p>For this lab, keep both Idea &amp; Sourcetree open at the same time.</p>
@@ -337,7 +338,7 @@ tmp
 *.iws</code></pre>
 <p>Save this file - and review the Sourcetree view again:</p>
 <p><img src="img/03.png" alt=""></p>
-<p>The change is subtle - git is no longer &#39;tracking&#39; the idea files, but notice that it reporting the one of the files we are tracking - .gitignore - is showing up as having a change.</p>
+<p>The change is subtle - git is no longer &#39;tracking&#39; the idea files, but notice that it reporting the one of the files we are tracking - .gitignore - is showing up as having a change, and we still have the change to application.conf (the rename).</p>
 <p>This change is noted, but not &#39;staged&#39; or &#39;committed&#39; yet. We will do both now</p>
 <h2>Staging</h2>
 <p>To stage the changes, we just select all the &#39;Unstaged files&#39; check box - which reconfigures the view like this:</p>
