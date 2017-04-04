@@ -342,8 +342,8 @@ jpa.ddl=update</code></pre>
      
       <div  class="ui tab segment lab" data-tab="04">
         <h1>Deploy</h1>
-<p>The settings we configure on the previous step has connect our app to Github - and when push a change to github, it will automatically start the app.</p>
-<p>Make a small cosmetic change now (add a space somewhere), stage, commit and push.</p>
+<p>The settings we configure on the previous step has connect our app to Github - and when we push a change to github, it will automatically start the app.</p>
+<p>Make a small cosmetic change now (add a space to one of the sources somewhere), stage, commit and push.</p>
 <p>After a few minutes the app should be live - on the same url that you checked earlier.</p>
 <p>If you go to the Activity - you can view the logs by selecting the <code>more</code> button:</p>
 <p><img src="img/15.png" alt=""></p>
@@ -357,7 +357,22 @@ jpa.ddl=update</code></pre>
         <h1>Exercises</h1>
 <h2>Exercise 1: Experiment with Push</h2>
 <p>Make some more cosmetic changes - perhaps changing the wording on some the the screens.</p>
-<p>Practice staging, commiting and pushing these changes. Check the logs to see what is happing just after you push. Have a look to see that the deployed app embodies the new version.</p>
+<p>Practice staging, committing and pushing these changes. Check the logs to see what is happing just after you push. Have a look to see that the deployed app embodies the new version.</p>
+<h2>Exercise 2: Run the App locally again</h2>
+<p>You will notice that the app no longer runs locally - this is is because of these changes we made:</p>
+<h2>conf/application.conf</h2>
+<pre><code># db.default=mem
+
+db=${DATABASE_URL}
+jpa.dialect=org.hibernate.dialect.PostgreSQLDialect
+jpa.ddl=update</code></pre>
+<p>We should reverse these changes to get it to run locally again:</p>
+<pre><code>db.default=mem
+
+# db=${DATABASE_URL}
+# jpa.dialect=org.hibernate.dialect.PostgreSQLDialect
+# jpa.ddl=update</code></pre>
+<p>In the above, we have commented out the three new lines, and reverted the database to being in-memory.</p>
 
       </div>
      
