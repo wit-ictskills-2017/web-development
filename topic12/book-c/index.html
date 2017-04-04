@@ -108,13 +108,13 @@ body
   <header class="header item">
     <i id="toc" class="sitemap icon"></i>
     <a href="../index.html">
-      Git, Github & Bitbucket
+      Assignment Studio + Deployment
     </a>
   </header>
   <div class="right tab-menu menu">
     
-    <a class="item" data-tab="Lab-11a Sourcdtree">
-      Lab-11a Sourcdtree
+    <a class="item" data-tab="Lab-12">
+      Lab-12
     </a>
     
     <a class="item" data-tab="01">
@@ -131,14 +131,6 @@ body
     
     <a class="item" data-tab="04">
       04
-    </a>
-    
-    <a class="item" data-tab="05">
-      05
-    </a>
-    
-    <a class="item" data-tab="06">
-      06
     </a>
     
     <a class="item" data-tab="Exercises">
@@ -269,7 +261,7 @@ body
       
     
       
-        <a class="active item" href="../../topic11/book-a-sourcetree/index.html">
+        <a class="item" href="../../topic11/book-a-sourcetree/index.html">
           Lab-11a Sourcdtree
         </a>
       
@@ -281,7 +273,7 @@ body
       
     
       
-        <a class="item" href="../../topic12/book-c/index.html">
+        <a class="active item" href="../../topic12/book-c/index.html">
           Lab-12
         </a>
       
@@ -291,155 +283,81 @@ body
     <div class="ui basic segment">
       <br>
       
-      <div  class="ui tab segment lab" data-tab="Lab-11a Sourcdtree">
+      <div  class="ui tab segment lab" data-tab="Lab-12">
         <h1>Objectives</h1>
-<p>Install and Configure Sourcetree</p>
+<p>Deploy the an app to Heroku. This will require a heroku account + a locally installed git tool set.</p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="01">
-        <h1>Git,  Github &amp; Bitbucket</h1>
-<p>Make sure git is installed for your workstation::</p>
+        <h1>Git</h1>
+<p>For this lab, you must have your repository on github.com. See Lab 11 for guidance and examples using Sourcetree.</p>
+<h1>Heroku</h1>
+<p>Create an new account on Heroku:</p>
 <ul>
-<li><a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></li>
+<li><a href="https://www.heroku.com/">https://www.heroku.com/</a></li>
 </ul>
-<p>Verify that is is by opening a shell (command prompt on Windows) and enter the following:</p>
-<pre><code>git --version</code></pre>
-<p>The system might respond with something like this:</p>
-<pre><code>git version 2.10.1 (Apple Git-78)</code></pre>
-<h1>Github</h1>
-<p>Sign up for a github account:</p>
-<ul>
-<li><a href="https://github.com/">https://github.com/</a></li>
-</ul>
-<p>Be sure to verify your email.</p>
-<h1>Bitbucket</h1>
-<p>Sign up for a github account:</p>
-<ul>
-<li><a href="https://bitbucket.org/">https://bitbucket.org/</a></li>
-</ul>
-<p>Be sure to verify your email.</p>
+<p>and log in.</p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="02">
-        <h1>Install Sourcetree</h1>
-<p>Visit:</p>
-<ul>
-<li><a href="https://www.sourcetreeapp.com/">https://www.sourcetreeapp.com/</a></li>
-</ul>
-<p>And download and install the application for your platform.</p>
-<p>On the very first screen - you will be asked to log in to <code>Atlassian</code>. Your bitbucket credentials should work here...</p>
-<p>During installation you will be asked to link your sourcetree installation to github and to bitbucket</p>
-<p>This are the first install screen you will see:</p>
-<p><img src="img/01.png" alt=""></p>
-<p>Here you will be asked to log in to an <code>Atlassian</code> account:</p>
-<p><img src="img/02.png" alt=""></p>
-<p>The credentials here should be the same as your bitbucket account details from the last step.</p>
-<p><img src="img/03.png" alt=""></p>
-<p>We would link to link our Sourcetree installation to both Bitbucket &amp; Github:</p>
+        <h1>Prepare the Play App</h1>
+<p>Create a new files in your project called <code>ProcFile</code> - in the root of the project:</p>
+<h2>ProcFile</h2>
+<pre><code>web: play run --http.port=$PORT $PLAY_OPTS</code></pre>
+<p>In the conf folder, edit <code>application.conf</code> and locate the database configuration (around line 80):</p>
+<h2>conf/application.conf</h2>
+<pre><code># db.default=mem
+
+db=${DATABASE_URL}
+jpa.dialect=org.hibernate.dialect.PostgreSQLDialect
+jpa.ddl=update</code></pre>
+<p>In the above we commented out tue <code>db.default=mem</code> line, and included three new lines.</p>
+<p>Commit these changes:</p>
 <p><img src="img/04.png" alt=""></p>
-<p>Selecting each of the above will take you through an authorisation sequence with both services.</p>
-<p>If all goes well, the Sourcetree home screen will launch:</p>
-<p><img src="img/11.png" alt=""></p>
-<p>To see if the both the bitbucket a github accounts are properly linked, select <code>Tools-&gt;Options-&gt;Authentication</code> :</p>
-<p><img src="img/10.png" alt=""></p>
-<p>This should show the both accounts linked as above.</p>
+<p>... and the push to github:</p>
+<p><img src="img/05.png" alt=""></p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="03">
-        <h1>Create new Repo on Github</h1>
-<p>Back on :</p>
-<ul>
-<li><a href="https://github.com">https://github.com</a></li>
-</ul>
-<p>Create a new repository:</p>
-<p><img src="img/17.png" alt=""></p>
-<p>This will create a new empty repo on github.</p>
-<p><img src="img/18.png" alt=""></p>
-<p>Note carefully the url of the repo - in the box above. Copy this to the clipboard now.</p>
+        <h1>Heroku</h1>
+<p>Create a new app on heroku:</p>
+<p><img src="img/06.png" alt=""></p>
+<p>Give the app a name and region:</p>
+<p><img src="img/07.png" alt=""></p>
+<p>In the <code>Deploy</code> screen, press <code>Connect to GitHib</code>:</p>
+<p><img src="img/08.png" alt=""></p>
+<p>.. and on the next screen, enter your github + repositort name and press connect:</p>
+<p><img src="img/09.png" alt=""></p>
+<p>Then press the <code>Enable Automatic Deploys</code> button:</p>
+<p><img src="img/10.png" alt=""></p>
+<p>Select the &#39;Settings&#39; screen, and scroll down until you see your domain:</p>
+<p><img src="img/13.png" alt=""></p>
+<p>You should see the url for the deployed app there.</p>
+<p>If you try to visit it, you will find it is not available just yet.</p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="04">
-        <h1>Create New Application</h1>
-<p>We now would like to start a new play application, which we will tie to a github repo.</p>
-<p>First, create a new app by cloning a starter app:</p>
-<h2>Create New Project</h2>
-<p>Create a new play project using this command:</p>
-<pre><code>git clone https://github.com/edeleastar/play-template-1.git</code></pre>
-<p>The shell should show something like this:</p>
-<pre><code>Cloning into &#39;play-template-1&#39;...
-remote: Counting objects: 66, done.
-remote: Compressing objects: 100% (47/47), done.
-remote: Total 66 (delta 9), reused 66 (delta 9), pack-reused 0
-Unpacking objects: 100% (66/66), done.</code></pre>
-<h2>Rename Project</h2>
-<p>The default name of the project should be changed now. This will require the following procedure:</p>
-<ul>
-<li>Rename the folder <code>play-template-1</code>. Call the folder <code>todolist-versioned</code> instead.</li>
-<li><p>Use Sublime Text to edit this file: <code>playlist/conf/application.conf</code>. The first three lines contains the following:</p>
-<pre><code>  # This is the main configuration file for the application.
-  # ~~
-  application.name=play-template-1</code></pre>
-</li>
-<li><p>Change <code>play-template-1</code> above to <code>todolist-versioned</code>, and save the file:</p>
-<pre><code>  # This is the main configuration file for the application.
-  # ~~
-  application.name=todolist-versioned</code></pre>
-</li>
-</ul>
-<h2>Run the project -</h2>
-<pre><code>play run</code></pre>
-<p>and verify that the skeleton app is available:</p>
-<ul>
-<li><a href="http://localhost:9000">http://localhost:9000</a></li>
-</ul>
-<p>Do nor proceed to the next step until this procedure has been completed without any errors.</p>
-
-      </div>
-     
-      <div  class="ui tab segment lab" data-tab="05">
-        <h1>Set Remote Repo</h1>
-<p>Your Sourcetree app currently looks like this:</p>
-<p><img src="img/11.png" alt=""></p>
-<p>Locate the <code>todolist-versioned</code> folder we just created, and drag and drop it onto SourceTree:</p>
+        <h1>Deploy</h1>
+<p>The settings we configure on the previous step has connect our app to Github - and when push a change to github, it will automatically start the app.</p>
+<p>Make a small cosmetic change now (add a space somewhere), stage, commit and push.</p>
+<p>After a few minutes the app should be live - on the same url that you checked earlier.</p>
+<p>If you go to the Activity - you can view the logs by selecting the <code>more</code> button:</p>
+<p><img src="img/15.png" alt=""></p>
+<p>This will display the same logs that were appearing locally (in the command line), except these logs are now in a browser window, connected to your app:</p>
 <p><img src="img/12.png" alt=""></p>
-<p>Select it in the navigation panel, and we have a more detailed view:</p>
-<p><img src="img/13.png" alt=""></p>
-<p>Select <code>Repository-&gt;Settings</code> - and you will get details of the current <code>remote</code> repo this repository is connected to:</p>
-<p><img src="img/14.png" alt=""></p>
-<p>Select <code>Edit</code> - and change URL / Path to the url you should have in the clipboard from step 3:</p>
-<p><img src="img/20.png" alt=""></p>
-
-      </div>
-     
-      <div  class="ui tab segment lab" data-tab="06">
-        <h1>Push</h1>
-<p>Starting from this view:</p>
-<p><img src="img/13.png" alt=""></p>
-<p>Press the <code>Push</code> button:</p>
-<p>This will bring up this screen:</p>
-<p><img src="img/20.png" alt=""></p>
-<p>When you press Push on this panel, the application will be replicated to the repo in your account on github. This might take a minute or so...</p>
-<p>You should be able to view it on github now:</p>
-<p><img src="img/21.png" alt=""></p>
-<p>Explore the various view - including the <code>commits</code> screen:</p>
-<p><img src="img/22.png" alt=""></p>
+<p>Monitor the logs - and verify that the console seems to display messages from the deployed app.</p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="Exercises">
         <h1>Exercises</h1>
-<p>To get fluent with this procedure, try the following:</p>
-<h2>Exercise 1: Github Practice</h2>
-<p>Create another new app - called <code>demo-1</code> - using the procedure  specified on Step 04.</p>
-<p>Then, Following steps 05 and 06, attach the new project to a new repo on github.</p>
-<h2>Exercise 2: Bitbucket Practice</h2>
-<p>The procedure we carried out to bind a local repo to github can also be carried out to bind a repo to a bitbucket hosted repository.
-Create (another!) new project <code>demo-2</code> - this time see if you can figure out how put it on bitbucket.</p>
-<p>The main difference between github and bitbucket is that github repos are always public, whereas bitbucket can be either (default private).</p>
+<h2>Exercise 1: Experiment with Push</h2>
+<p>Make some more cosmetic changes - perhaps changing the wording on some the the screens.</p>
+<p>Practice staging, commiting and pushing these changes. Check the logs to see what is happing just after you push. Have a look to see that the deployed app embodies the new version.</p>
 
       </div>
      
